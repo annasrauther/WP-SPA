@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# Set PATH to include node_modules/.bin
+export PATH=./node_modules/.bin:$PATH
+
+. "$(dirname -- "$0")/_/husky.sh"
+
+lint-staged
