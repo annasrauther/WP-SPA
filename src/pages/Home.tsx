@@ -1,3 +1,4 @@
+import React from "react";
 import Banner from "../components/Banner";
 import PostList from "../components/PostList";
 import { PostListProps } from "../interface/PostList";
