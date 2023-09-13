@@ -1,8 +1,12 @@
 // Import dependencies
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 // Import services
 import { validateToken } from "../services/authService";
+
+// Constants for local storage keys
+const TOKEN_KEY = "jwtToken";
+const NAME_KEY = "name";
 
 /**
  * AuthContextType
@@ -23,8 +27,12 @@ interface AuthContextType {
  *
  * @const
  * @type {React.Context<AuthContextType | undefined>}
+ * @default undefined
+ * @returns {React.Context<AuthContextType | undefined>}
+ * @exports
  */
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext: React.Context<AuthContextType | undefined> =
+  createContext<AuthContextType | undefined>(undefined);
 
 /**
  * AuthProviderProps
@@ -42,31 +50,37 @@ interface AuthProviderProps {
  * @param {AuthProviderProps} props
  * @returns {JSX.Element}
  */
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  // set authenticated to false by default
+export const AuthProvider: React.FC<AuthProviderProps> = ({
+  children,
+}: AuthProviderProps): JSX.Element => {
+  // Set authenticated to false by default
   const [authenticated, setAuthenticated] = useState(false);
+
+  // Function to validate and set token
+  const validateAndSetToken = async (token: string) => {
+    try {
+      const isValid = await validateToken(token);
+
+      if (isValid) {
+        localStorage.setItem(TOKEN_KEY, token);
+        setAuthenticated(true);
+      } else {
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(NAME_KEY);
+        setAuthenticated(false);
+      }
+    } catch (error) {
+      console.error("Token validation error", error);
+    }
+  };
 
   useEffect(() => {
     // Check for an existing token in local storage when the component mounts
-    const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem(TOKEN_KEY);
 
     // If there is a token, check if it is valid
     if (token) {
-      // Validate the token
-      validateToken(token)
-        .then((isValid) => {
-          // If the token is valid, set authenticated to true, otherwise remove the token from local storage
-          if (isValid) {
-            setAuthenticated(true);
-          } else {
-            localStorage.removeItem("jwtToken");
-            localStorage.removeItem("name");
-            setAuthenticated(false);
-          }
-        })
-        .catch((error) => {
-          console.error("Token validation error", error);
-        });
+      validateAndSetToken(token);
     }
   }, []);
 
@@ -75,17 +89,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
    * @param {string} token
    * @returns {void}
    */
-  const login = (token: string) => {
-    localStorage.setItem("jwtToken", token); // Store the token in local storage
-    setAuthenticated(true);
+  const login = (token: string): void => {
+    validateAndSetToken(token);
   };
 
   /**
    * Logout function
    * @returns {void}
    */
-  const logout = () => {
-    localStorage.removeItem("jwtToken"); // Remove the token from storage
+  const logout = (): void => {
+    localStorage.removeItem(TOKEN_KEY);
     setAuthenticated(false);
   };
 
@@ -94,18 +107,4 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
-
-/**
- * useAuth hook
- *
- * @returns {AuthContextType}
- */
-export const useAuth = () => {
-  // Retrieve the context from AuthContext
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-  return context;
 };
