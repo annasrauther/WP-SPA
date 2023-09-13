@@ -9,11 +9,7 @@ import React from "react";
  * @returns {JSX.Element} JSX element representing the banner.
  */
 function Banner({ name }: { name: string }): JSX.Element {
-  return (
-    <div className="banner">
-      <h1>Welcome, {name}!</h1>
-    </div>
-  );
+  return <section className="welcome logged-in">Welcome {name}!</section>;
 }
 
 export default Banner;

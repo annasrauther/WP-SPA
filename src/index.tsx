@@ -1,6 +1,6 @@
 // Import dependencies
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 // Import components
 import App from "./App";
@@ -23,11 +23,12 @@ if (!rootElement) {
  * Wrap the app in an ErrorBoundary component to catch any errors that occur
  * during rendering, and display a fallback UI instead of the app.
  */
-ReactDOM.render(
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
     <ErrorBoundary>
       <App />
     </ErrorBoundary>
   </React.StrictMode>,
-  rootElement,
 );
