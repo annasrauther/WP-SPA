@@ -1,16 +1,33 @@
 import React from "react";
 import Post from "./Post";
-import { PostListProps } from "../interface/PostList";
+
+interface PostListProps {
+  posts: {
+    id: number;
+    title: {
+      rendered: string;
+    };
+    date: string;
+    content: {
+      rendered: string;
+    };
+    _embedded: {
+      author: {
+        name: string;
+      }[];
+    };
+  }[];
+}
 
 const PostList: React.FC<PostListProps> = ({ posts }) => {
   return (
     <div itemScope itemType="https://schema.org/Blog">
-      {posts.map((post, index) => (
+      {posts.map((post) => (
         <Post
-          key={index}
+          key={post.id}
           title={post.title}
-          datePublished={post.datePublished}
-          author={post.author}
+          date={post.date}
+          author={post?._embedded?.author[0]?.name}
           content={post.content}
         />
       ))}

@@ -30,7 +30,7 @@ function Navbar() {
 
         {/* Show this when the user is logged in */}
         <li className="logged-in menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
-          <a href="#">Logout</a>
+          <a href="/">Logout</a>
         </li>
       </ul>
     </nav>

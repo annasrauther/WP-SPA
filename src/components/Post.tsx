@@ -1,13 +1,19 @@
 import React from "react";
-import { PostProps } from "../interface/Post";
 import "../styles/post.css";
+import PostDate from "./PostDate";
 
-const Post: React.FC<PostProps> = ({
-  title,
-  datePublished,
-  author,
-  content,
-}) => {
+interface PostProps {
+  title: {
+    rendered: string;
+  };
+  date: string;
+  author: string;
+  content: {
+    rendered: string;
+  };
+}
+
+const Post: React.FC<PostProps> = ({ title, date, author, content }) => {
   return (
     <article
       itemScope
@@ -15,20 +21,25 @@ const Post: React.FC<PostProps> = ({
       className="post"
     >
       <header>
-        <h2 itemProp="headline">{title}</h2>
+        <h2
+          itemProp="name headline"
+          dangerouslySetInnerHTML={{ __html: title.rendered }}
+        />
         <div className="date">
           <strong>Publish Date</strong>:
           <span itemProp="datePublished">
-            <time dateTime={datePublished}>{datePublished}</time>
+            <PostDate date={date} />
           </span>
         </div>
         <div className="author">
           <strong>Author</strong>: <span itemProp="author">{author}</span>
         </div>
       </header>
-      <div itemProp="articleBody" className="content">
-        {content}
-      </div>
+      <div
+        itemProp="articleBody"
+        className="content"
+        dangerouslySetInnerHTML={{ __html: content.rendered }}
+      />
     </article>
   );
 };
