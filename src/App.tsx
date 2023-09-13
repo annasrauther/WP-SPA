@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Import dependencies
+import React, { Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+// Import components
+import Header from "./components/Header";
+import Loading from "./components/Loading";
+
+// Import Context
+import { AuthProvider } from "./context/AuthContext";
+
+// Lazy load pages
+const Home = React.lazy(() => import("./pages/Home"));
+const Page = React.lazy(() => import("./pages/Page"));
+const Login = React.lazy(() => import("./pages/Login"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+
+/**
+ * App component
+ *
+ * @returns {JSX.Element}
+ * @component
+ */
+function App(): React.JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AuthProvider>
+        <Header />
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pages/:slug" element={<Page />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
