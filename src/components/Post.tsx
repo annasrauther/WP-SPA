@@ -1,8 +1,21 @@
+// Import dependencies
 import React from "react";
 
-import "../styles/post.css";
+// Import components
 import PostDate from "./PostDate";
 
+// Import styles
+import "../styles/post.css";
+
+/**
+ * Post props
+ *
+ * @interface PostProps
+ * @property {string} title
+ * @property {string} date
+ * @property {string} author
+ * @property {string} content
+ */
 interface PostProps {
   title: {
     rendered: string;
@@ -14,6 +27,17 @@ interface PostProps {
   };
 }
 
+/**
+ * Post component
+ *
+ * @returns {JSX.Element}
+ * @component
+ * @param {PostProps} props
+ * @param {string} props.title
+ * @param {string} props.date
+ * @param {string} props.author
+ * @param {string} props.content
+ */
 const Post: React.FC<PostProps> = ({ title, date, author, content }) => {
   return (
     <article

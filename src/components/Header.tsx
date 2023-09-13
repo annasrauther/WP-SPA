@@ -1,7 +1,18 @@
+// Import dependencies
 import React from "react";
+
+// Import styles
 import "../styles/header.css";
+
+// Import components
 import Navbar from "./Navbar";
 
+/**
+ * Header component
+ *
+ * @returns {JSX.Element}
+ * @component
+ */
 const Header: React.FC = () => {
   return (
     <header

@@ -1,6 +1,7 @@
+// Import dependencies
 import React from "react";
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <div>
       <h2>404 Not Found</h2>

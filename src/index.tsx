@@ -1,7 +1,12 @@
+// Import dependencies
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/index.css";
+
+// Import components
 import App from "./App";
+
+// Import styles
+import "./styles/index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
