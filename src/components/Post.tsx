@@ -1,20 +1,21 @@
 // Import dependencies
-import React from "react";
+import React from 'react';
 
 // Import components
-import PostDate from "./PostDate";
+import ContentRenderer from './ContentRenderer';
+import PostHeader from './PostHeader';
 
 // Import styles
-import "../styles/post.css";
+import '../styles/post.css';
 
 /**
- * Post props
+ * Props for the Post component.
  *
  * @interface PostProps
- * @property {string} title
- * @property {string} date
- * @property {string} author
- * @property {string} content
+ * @property {string} title - The title of the post.
+ * @property {string} date - The date of the post.
+ * @property {string} author - The author of the post.
+ * @property {string} content - The content of the post (HTML).
  */
 interface PostProps {
   title: {
@@ -28,43 +29,16 @@ interface PostProps {
 }
 
 /**
- * Post component
+ * PostHeader component for displaying post header details.
  *
- * @returns {JSX.Element}
- * @component
- * @param {PostProps} props
- * @param {string} props.title
- * @param {string} props.date
- * @param {string} props.author
- * @param {string} props.content
+ * @param {PostProps} props - The props for the PostHeader component.
+ * @returns {JSX.Element} A JSX element representing the post header.
  */
-const Post: React.FC<PostProps> = ({ title, date, author, content }) => {
+const Post: React.FC<PostProps> = ({ title, date, author, content }: PostProps): JSX.Element => {
   return (
-    <article
-      itemScope
-      itemType="http://schema.org/BlogPosting"
-      className="post"
-    >
-      <header>
-        <h2
-          itemProp="name headline"
-          dangerouslySetInnerHTML={{ __html: title.rendered }}
-        />
-        <div className="date">
-          <strong>Publish Date</strong>:
-          <span itemProp="datePublished">
-            <PostDate date={date} />
-          </span>
-        </div>
-        <div className="author">
-          <strong>Author</strong>: <span itemProp="author">{author}</span>
-        </div>
-      </header>
-      <div
-        itemProp="articleBody"
-        className="content"
-        dangerouslySetInnerHTML={{ __html: content.rendered }}
-      />
+    <article itemScope itemType="http://schema.org/BlogPosting" className="post">
+      <PostHeader title={title} date={date} author={author} />
+      <ContentRenderer content={content} />
     </article>
   );
 };

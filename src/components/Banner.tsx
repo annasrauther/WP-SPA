@@ -1,25 +1,19 @@
 // Import dependencies
-import React from "react";
+import React from 'react';
 
 /**
- * Banner Props
- * @interface BannerProps
- * @property {string} name
- */
-interface BannerProps {
-  name: string;
-}
-
-/**
- * Banner component
+ * Banner component to display a welcome message.
  *
- * @returns {JSX.Element}
- * @component
- * @param {BannerProps} props
- * @param {string} props.name
+ * @param {Object} props - Component props.
+ * @param {string} props.name - The user's name to display in the banner.
+ * @returns {JSX.Element} JSX element representing the banner.
  */
-const Banner: React.FC<BannerProps> = ({ name }) => {
-  return <section className="welcome logged-in">Welcome {name}!</section>;
-};
+function Banner({ name }: { name: string }): JSX.Element {
+  return (
+    <div className="banner">
+      <h1>Welcome, {name}!</h1>
+    </div>
+  );
+}
 
 export default Banner;

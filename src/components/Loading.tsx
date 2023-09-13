@@ -1,5 +1,5 @@
 // Import dependencies
-import React from "react";
+import React from 'react';
 
 /**
  * Loading component
@@ -7,7 +7,7 @@ import React from "react";
  * @returns {JSX.Element}
  * @component
  */
-const Loading = () => {
+const Loading = (): JSX.Element => {
   return <div>Loading</div>;
 };
 
