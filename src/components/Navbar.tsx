@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
+  const { authenticated, logout } = useAuth();
+
   return (
     <nav
       className="site-navigation"
@@ -23,15 +26,19 @@ function Navbar() {
           <Link to="/pages/about">About</Link>
         </li>
 
-        {/* Show this when the user is logged out */}
-        <li className="logged-out menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
-          <Link to="/login">Login</Link>
-        </li>
-
-        {/* Show this when the user is logged in */}
-        <li className="logged-in menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
-          <a href="/">Logout</a>
-        </li>
+        {/* Conditionally render login/logout based on authentication status */}
+        {authenticated ? (
+          <li
+            className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1915"
+            onClick={logout}
+          >
+            <a href="/">Logout</a>
+          </li>
+        ) : (
+          <li className="logged-out menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
+            <Link to="/login">Login</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

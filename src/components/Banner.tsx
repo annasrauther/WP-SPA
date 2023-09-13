@@ -1,7 +1,11 @@
 import React from "react";
 
-const Banner = () => {
-  return <section className="welcome logged-in">Welcome username!</section>;
+interface BannerProps {
+  name: string;
+}
+
+const Banner: React.FC<BannerProps> = ({ name }) => {
+  return <section className="welcome logged-in">Welcome {name}!</section>;
 };
 
 export default Banner;

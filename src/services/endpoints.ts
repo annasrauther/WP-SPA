@@ -2,5 +2,5 @@ export const API_BASE = `${process.env.REACT_APP_PUBLIC_WORDPRESS_URL}/wp-json/w
 
 export const POSTS_ENDPOINT = API_BASE + "posts";
 export const PAGE_ENDPOINT = API_BASE + "pages";
-export const JWT_TOKEN = API_BASE + "jwt-auth/v1/token";
-export const JWT_VALIDATE = API_BASE + "jwt-auth/v1/token/validate";
+export const JWT_TOKEN = `${process.env.REACT_APP_PUBLIC_WORDPRESS_URL}/wp-json/jwt-auth/v1/token`;
+export const JWT_VALIDATE = `${process.env.REACT_APP_PUBLIC_WORDPRESS_URL}/wp-json/jwt-auth/v1/token/validate`;
