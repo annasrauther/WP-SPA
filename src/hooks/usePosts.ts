@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 // Import services
-import { getPostArchive } from '../services/PostService';
+import { getPostArchive } from "../services/PostService";
 
 // Import interfaces
-import { PostProps } from '../interfaces/Post';
+import { PostProps } from "../interfaces/Post";
 
 /**
  * Custom hook for fetching posts, handling loading, and errors.
@@ -30,8 +30,8 @@ export const usePosts = () => {
       const data: PostProps[] = await getPostArchive();
       setPosts(data);
       setLoading(false);
-    } catch (err) {
-      setError(err);
+    } catch (error: unknown | null) {
+      setError(error as Error);
       setLoading(false);
     }
   };

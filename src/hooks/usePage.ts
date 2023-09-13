@@ -1,18 +1,8 @@
-import { useEffect, useState } from 'react';
-import { getPage } from '../services/PageService';
+import { useEffect, useState } from "react";
+import { getPage } from "../services/PageService";
 
 // Import interfaces
-import { PageProps } from '../interfaces/Page';
-
-/**
- * Page props representing a single page's data.
- * @interface PageProps
- * @property {number} id - The unique identifier of the page.
- * @property {Object} title - The title object.
- * @property {string} title.rendered - The rendered title of the page.
- * @property {Object} content - The content object.
- * @property {string} content.rendered - The rendered content of the page.
- */
+import { PageProps } from "../interfaces/Page";
 
 /**
  * Custom hook to fetch page data based on a slug.
@@ -29,19 +19,35 @@ export const usePage = (slug: string | undefined) => {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const fetchPageData = async (slug: string | undefined) => {
+    // If no slug is provided, set loading to false and return
+    if (slug === undefined) {
+      setLoading(false);
+      setError(null);
+      return;
+    }
+
+    /**
+     * Fetch page data from the API.
+     *
+     * @param {string} slug - The slug of the page to fetch.
+     * @returns {Promise<void>}
+     * @throws {Error}
+     * @async
+     */
+    const fetchPageData = async (slug: string) => {
       try {
         const pageData = await getPage(slug);
         setPage(pageData);
         setLoading(false);
         setError(null);
-      } catch (error) {
+      } catch (error: unknown | null) {
         setPage(null);
         setLoading(false);
-        setError(error);
+        setError(error as Error);
       }
     };
 
+    // Call the async fetchPageData function
     fetchPageData(slug);
   }, [slug]);
 
