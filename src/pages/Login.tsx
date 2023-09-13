@@ -3,10 +3,10 @@ import React, { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Import hooks
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 // Import services
-import { login as loginService } from "../services/authService";
+import { login } from "../services/authService";
 
 // Import styles
 import "../styles/login.css";
@@ -17,12 +17,12 @@ import "../styles/login.css";
  * @returns {JSX.Element}
  * @component
  */
-const Login: React.FC = () => {
+const Login: React.FC = (): JSX.Element => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   // Login function from AuthContext
-  const { login } = useAuth();
+  const { login: authLogin } = useAuth();
 
   // Declare navigate function
   const navigate = useNavigate();
@@ -33,16 +33,16 @@ const Login: React.FC = () => {
 
     try {
       // Attempt login
-      loginService(username, password, (token) => {
-        // If successful, set token and navigate to home page
-        if (token) {
-          // Set token
-          login(token);
+      const token = await login(username, password);
 
-          // Navigate to home page
-          navigate("/");
-        }
-      });
+      // If successful, set token and navigate to home page
+      if (token) {
+        // Set token using context
+        authLogin(token);
+
+        // Navigate to home page
+        navigate("/");
+      }
     } catch (error) {
       console.error("Login failed", error);
       // Handle login error

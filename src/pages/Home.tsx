@@ -1,82 +1,54 @@
-// Import dependencies
 import React, { useEffect, useState } from "react";
 
 // Import components
 import Banner from "../components/Banner";
+import Loading from "../components/Loading";
 import PostList from "../components/PostList";
 
 // Import hooks
-import { useAuth } from "../context/AuthContext";
-
-// Import services
-import { getPostArchive } from "../services/PostService";
-import Loading from "../components/Loading";
+import { useAuth } from "../hooks/useAuth";
+import { usePosts } from "../hooks/usePosts";
 
 /**
- * Post props
- * @interface PostProps
- * @property {number} id
- * @property {string} title
- * @property {string} date
- * @property {string} content
- * @property {object} _embedded
- * @property {object[]} _embedded.author
- * @property {string} _embedded.author[].name
- */
-interface PostProps {
-  id: number;
-  title: {
-    rendered: string;
-  };
-  date: string;
-  content: {
-    rendered: string;
-  };
-  _embedded: {
-    author: {
-      name: string;
-    }[];
-  };
-}
-
-/**
- * Home component
+ * Home component displaying user-specific content.
  *
- * @returns {JSX.Element}
  * @component
+ * @returns {JSX.Element} The JSX element representing the home page.
  */
-const Home: React.FC = () => {
-  // Declare state variables
-  const [posts, setPosts] = useState<PostProps[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+const Home: React.FC = (): JSX.Element => {
+  // Fetch posts, loading state, and error state using the custom hook
+  const { posts, loading, error } = usePosts();
+  const { authenticated } = useAuth();
   const [userName, setUserName] = useState<string>("");
 
-  const { authenticated } = useAuth();
-
+  // Set the user's name from local storage when authenticated
   useEffect(() => {
-    // Get posts
-    getPostArchive().then((data) => {
-      setPosts(data);
-      setLoading(false);
-    });
-
-    // If authenticated, get user name from local storage
     if (authenticated) {
-      setUserName(localStorage.getItem("name") || "");
+      const storedName = localStorage.getItem("name") || "";
+      setUserName(storedName);
     }
   }, [authenticated]);
 
+  // Render loading indicator if data is still loading
   if (loading) {
     return <Loading />;
   }
 
+  // Render an error message if an error occurred during data fetching
+  if (error) {
+    console.error("Error fetching posts:", error);
+    return <div>An error occurred while fetching posts.</div>;
+  }
+
   return (
     <>
-      {
-        /* If authenticated, display banner */
-        authenticated ? <Banner name={userName} /> : null
-      }
-      <PostList posts={posts} />
+      {/* Display the banner if authenticated */}
+      {authenticated && <Banner name={userName} />}
+      {posts.length > 0 ? (
+        <PostList posts={posts} />
+      ) : (
+        <div>No posts found.</div>
+      )}
     </>
   );
 };

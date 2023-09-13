@@ -1,52 +1,45 @@
-// Import dependencies
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 
-// Import services
-import { getPage } from "../services/PageService";
+// Import components
+import Loading from "../components/Loading";
+
+// Import hooks
+import { usePage } from "../hooks/usePage";
 
 /**
- * Page props
- * @interface PageProps
- * @property {number} id
- * @property {string} title
- * @property {string} content
+ * Page component to display a single page's content.
+ *
+ * @component
+ * @returns {JSX.Element} JSX element representing the page.
  */
-
-interface PageProps {
-  id: number;
-  title: {
-    rendered: string;
-  };
-  content: {
-    rendered: string;
-  };
-}
-
-const Page: React.FC = () => {
+const Page: React.FC = (): JSX.Element => {
   // Retrieve the slug from the URL using useParams()
   const { slug } = useParams();
-  const [page, setPage] = useState<PageProps>({
-    id: 0,
-    title: {
-      rendered: "",
-    },
-    content: {
-      rendered: "",
-    },
-  });
 
-  const [loading, setLoading] = useState<boolean>(true);
+  /**
+   * Custom hook to fetch page data based on a slug.
+   * @type {Object}
+   * @property {PageProps | null} page - The page data, or null if not yet loaded.
+   * @property {boolean} loading - A boolean indicating if data is still loading.
+   * @property {Error | null} error - An error object if an error occurred, or null if no error.
+   */
+  const { page, loading, error } = usePage(slug);
 
-  useEffect(() => {
-    getPage(slug).then((data) => {
-      setPage(data);
-      setLoading(false);
-    });
-  }, [slug]);
-
+  // If the page is still loading, display a loading indicator.
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
+  }
+
+  // If an error occurred while fetching the page, display an error message.
+  if (error) {
+    console.error("Error fetching page:", error);
+    return <div>An error occurred while fetching the page.</div>;
+  }
+
+  // If no page was found, display a message.
+  if (!page) {
+    return <div>Page not found.</div>;
   }
 
   return (
