@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 // Import components
-import PostDate from './PostDate';
+import PostDate from "./PostDate";
 
 /**
  * Props for the PostHeader component.
@@ -33,7 +33,10 @@ const PostHeader: React.FC<PostHeaderProps> = ({
 }: PostHeaderProps): JSX.Element => {
   return (
     <header>
-      <h2 itemProp="name headline" dangerouslySetInnerHTML={{ __html: title.rendered }} />
+      <h2
+        itemProp="name headline"
+        dangerouslySetInnerHTML={{ __html: title.rendered }}
+      />
       <div className="date">
         <strong>Publish Date</strong>:
         <span itemProp="datePublished">

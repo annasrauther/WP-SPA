@@ -1,12 +1,12 @@
 // Import dependencies
-import React from 'react';
+import React from "react";
 
 // Import components
-import ContentRenderer from './ContentRenderer';
-import PostHeader from './PostHeader';
+import ContentRenderer from "./ContentRenderer";
+import PostHeader from "./PostHeader";
 
 // Import styles
-import '../styles/post.css';
+import "../styles/post.css";
 
 /**
  * Props for the Post component.
@@ -34,9 +34,18 @@ interface PostProps {
  * @param {PostProps} props - The props for the PostHeader component.
  * @returns {JSX.Element} A JSX element representing the post header.
  */
-const Post: React.FC<PostProps> = ({ title, date, author, content }: PostProps): JSX.Element => {
+const Post: React.FC<PostProps> = ({
+  title,
+  date,
+  author,
+  content,
+}: PostProps): JSX.Element => {
   return (
-    <article itemScope itemType="http://schema.org/BlogPosting" className="post">
+    <article
+      itemScope
+      itemType="http://schema.org/BlogPosting"
+      className="post"
+    >
       <PostHeader title={title} date={date} author={author} />
       <ContentRenderer content={content} />
     </article>

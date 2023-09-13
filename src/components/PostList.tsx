@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 // Import components
-import Post from './Post';
+import Post from "./Post";
 
 // Import interface
-import { PostProps } from '../interface/Post';
+import { PostProps } from "../interfaces/Post";
 
 /**
  * PostList component that renders a list of blog posts.

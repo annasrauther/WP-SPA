@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 // Import components
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
 
 // Import styles
-import '../styles/header.css';
+import "../styles/header.css";
 
 /**
  * Header component
@@ -14,8 +14,17 @@ import '../styles/header.css';
  */
 const Header: React.FC = () => {
   return (
-    <header className="site-header" role="banner" itemScope itemType="http://schema.org/WPHeader">
-      <h1 className="site-title" itemScope itemType="http://schema.org/Organization">
+    <header
+      className="site-header"
+      role="banner"
+      itemScope
+      itemType="http://schema.org/WPHeader"
+    >
+      <h1
+        className="site-title"
+        itemScope
+        itemType="http://schema.org/Organization"
+      >
         10up Blog
       </h1>
 

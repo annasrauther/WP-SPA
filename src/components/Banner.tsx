@@ -1,5 +1,5 @@
 // Import dependencies
-import React from 'react';
+import React from "react";
 
 /**
  * Banner component to display a welcome message.

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 // Import utils
-import { formatDate } from '../utils/date';
+import { formatDate } from "../utils/date";
 
 /**
  * PostDate Props
