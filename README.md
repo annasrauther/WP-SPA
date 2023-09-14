@@ -57,7 +57,7 @@ Before setting up and running the WP-SPA project, ensure you have the following 
 
 1. **WordPress Instance**: You should have a WordPress instance with REST API endpoints available for Posts and Pages. These endpoints are required for fetching content for the WP-SPA application.
 
-2. **CORS Configuration**: If you are running the WordPress instance locally, make sure to enable Cross-Origin Resource Sharing (CORS) and allow access from `http://localhost:3000` as the origin. This allows the WP-SPA application to efficiently make requests to the WordPress API.
+2. **CORS Configuration**: On your WordPress instance, make sure to enable Cross-Origin Resource Sharing (CORS) and allow access from `http://localhost:3000` as the origin. This allows the WP-SPA application to run locally and efficiently make requests to the WordPress API.
 
 3. **JWT Authentication**: Ensure that JWT (JSON Web Token) Authentication is set up and configured on your WordPress instance. Specifically, make sure the following endpoints are available for efficient authentication:
    - `/jwt-auth/v1/token`
