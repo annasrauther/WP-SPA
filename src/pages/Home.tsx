@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-
-// Import components
-import Banner from "../components/Banner";
-import Loading from "../components/Loading";
-import PostList from "../components/PostList";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 
 // Import hooks
 import { useAuth } from "../hooks/useAuth";
 import { usePosts } from "../hooks/usePosts";
+
+// Use React.lazy to import components lazily
+const Banner = lazy(() => import("../components/Banner"));
+const Loading = lazy(() => import("../components/Loading"));
+const PostList = lazy(() => import("../components/PostList"));
 
 /**
  * Home component displaying user-specific content.
@@ -29,11 +29,6 @@ const Home: React.FC = (): JSX.Element => {
     }
   }, [authenticated]);
 
-  // Render loading indicator if data is still loading
-  if (loading) {
-    return <Loading />;
-  }
-
   // Render an error message if an error occurred during data fetching
   if (error) {
     console.error("Error fetching posts:", error);
@@ -41,7 +36,7 @@ const Home: React.FC = (): JSX.Element => {
   }
 
   return (
-    <>
+    <Suspense fallback={<Loading />}>
       {/* Display the banner if authenticated */}
       {authenticated && <Banner name={userName} />}
       {posts.length > 0 ? (
@@ -49,7 +44,7 @@ const Home: React.FC = (): JSX.Element => {
       ) : (
         <div>No posts found.</div>
       )}
-    </>
+    </Suspense>
   );
 };
 
