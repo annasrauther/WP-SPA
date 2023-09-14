@@ -4,6 +4,8 @@
 
 I'm pleased to introduce the WP-SPA (WordPress Single Page Application) project, developed as part of my assignment for the `Senior JavaScript Developer` role at `10up`. This project showcases my proficiency in `React` development, JWT authentication, routing, and interaction with external APIs.
 
+- **Demo**: [View Demo](https://wp-spa.vercel.app/)
+
 <details>
   <summary><b>Project Approach Details</b></summary>
   
