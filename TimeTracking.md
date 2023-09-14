@@ -99,3 +99,4 @@
 - I haven't added Tests, but I would add them if needed for a production-ready application.
 - I felt the project was a bit challenging, specifically the building this assignment using minimal dependencies. So I had used natively available React APIs and Hooks to build this project. Just one dependency for routing, which is `react-router-dom`.
 - Just added one single Error Boundary component, but I would add more if needed for a production-ready application.
+- Managed to score a good Lighthouse score of almost 100% on all the pages. Except SEO, which is not applicable for this project.
