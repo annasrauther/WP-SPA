@@ -4,17 +4,6 @@ import { PAGE_ENDPOINT } from "./endpoints";
 import { PageProps } from "../interfaces/Page";
 
 /**
- * PageProps is the interface for the Page object.
- *
- * @interface PageProps
- * @property {number} id The ID of the page.
- * @property {object} title The title of the page.
- * @property {string} title.rendered The rendered title of the page.
- * @property {object} content The content of the page.
- * @property {string} content.rendered The rendered content of the page.
- */
-
-/**
  * Fetches a page by its slug from the WordPress API.
  *
  * @param {string} slug The slug of the page to fetch.
