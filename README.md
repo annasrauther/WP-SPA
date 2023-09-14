@@ -1,8 +1,15 @@
-# WP-SPA: WordPress API-Powered React Blog - Assignment Project
+# WP-SPA: WordPress Single Page Application - Powered by React
 
 ## Introduction
 
-I'm thrilled to present the WP-SPA (WordPress Single Page Application) project as part of my assignment for the Senior JavaScript Developer role at 10up. This application showcases my skills in React development, JWT authentication, routing and working with external APIs.
+I'm pleased to introduce the WP-SPA (WordPress Single Page Application) project, developed as part of my assignment for the `Senior JavaScript Developer` role at `10up`. This project showcases my proficiency in `React` development, JWT authentication, routing, and interaction with external APIs.
+
+<details>
+  <summary><b>Project Approach Details</b></summary>
+  
+  If you want to see how I approached this project, please read [TimeTracking.md](https://github.com/annasrauther/wp-spa/blob/trunk/TimeTracking.md).
+
+</details>
 
 ### Project Overview
 
@@ -22,17 +29,17 @@ This project is a React-based single-page application that fetches data from the
 
 While this project demonstrates my proficiency in several key areas, there are aspects that I haven't focused on as part of this assignment:
 
-- **Visual Appealing UI**: The assignment's primary focus was on React development, JWT authentication, and API integration. I did not make substantial changes to the provided HTML and CSS, so the visual appeal of the user interface remains unchanged.
+- **Visually Appealing UI**: The assignment's primary focus was on React development, JWT authentication, routing and API integration. I did not make substantial changes to the provided HTML and CSS, so the visual appeal of the user interface remains unchanged.
 
 - **Unit Tests**: I understand the importance of unit testing for code quality and reliability. However, due to the scope and time constraints of this assignment, I did not have the opportunity to write unit tests. In a real-world scenario, extensive test coverage would be a priority.
 
-- **Atomic Commits**: While I commit regularly to keep track of changes and maintain a detailed project history, I acknowledge that my commits are not strictly atomic. In practice, I prioritize consistent and meaningful commit messages to ensure clarity and transparency in the version control history. Feature branching is not consistently followed in this project.
+- **Atomic Commits**: While I commit regularly to keep track of changes and maintain a detailed project history, I acknowledge that my commits are not strictly atomic for this assignment. In practice, I prioritize consistent and meaningful commit messages to ensure clarity and transparency in the version control history. Feature branching is not consistently followed in this project.
 
 ### Technologies
 
 Here's an expanded overview of the technologies and dependencies used in this project, along with details on how each technology has been implemented:
 
-- **React**: The entire application is built with React, following component-based architecture. React components are used to structure the UI and manage application state. Custom hooks and context are extensively utilized to optimize code organization and data flow.
+- **React**: The entire application is built with React, following a component-based architecture. React components are used to structure the UI and manage application state. Custom hooks and context are extensively utilized to optimize code organization and data flow.
 
 - **TypeScript**: TypeScript is integrated to provide static typing for a more robust development experience. This helps catch type-related errors during development, improving code quality.
 
@@ -43,6 +50,20 @@ Here's an expanded overview of the technologies and dependencies used in this pr
 - **Prettier**: Prettier is used for code formatting to maintain a consistent code style throughout the project. It works seamlessly with ESLint to ensure code quality.
 
 - **Husky, Commitlint, lint-staged**: These tools are set up to enforce a standardized commit message format and run linting checks on staged files before commits. This ensures code consistency and quality throughout the development process.
+
+### Prerequisites
+
+Before setting up and running the WP-SPA project, ensure you have the following prerequisites in place:
+
+1. **WordPress Instance**: You should have a WordPress instance with REST API endpoints available for Posts and Pages. These endpoints are required for fetching content for the WP-SPA application.
+
+2. **CORS Configuration**: If you are running the WordPress instance locally, make sure to enable Cross-Origin Resource Sharing (CORS) and allow access from `http://localhost:3000` as the origin. This allows the WP-SPA application to efficiently make requests to the WordPress API.
+
+3. **JWT Authentication**: Ensure that JWT (JSON Web Token) Authentication is set up and configured on your WordPress instance. Specifically, make sure the following endpoints are available for efficient authentication:
+   - `/jwt-auth/v1/token`
+   - `/jwt-auth/v1/token/validate`
+
+These prerequisites are essential to ensure the smooth functioning of the WP-SPA project and proper integration with your WordPress instance.
 
 ### Installation and Setup
 
@@ -90,11 +111,13 @@ http://localhost:3000
 
 Once you have the project running locally, you can use the following credentials to log in:
 
-- **Username**: `jane`
-- **Password**: `12345`
+- **Username**: {Refer assignment}
+- **Password**: {Refer assignment}
 
 ### Final Thoughts
 
-I hope you enjoy exploring this project as much as I enjoyed building it. I look forward to discussing it with you in more detail during our next conversation.
+I'm grateful for the opportunity to work on this assignment. It was a great learning experience, and I enjoyed working on it. I look forward to hearing your feedback and discussing the project in detail.
+
+In case you want to see how I approached this assignment, please read [TimeTracking.md](https://github.com/annasrauther/wp-spa/blob/trunk/TimeTracking.md)
 
 If you have any questions or feedback, please feel free to reach out to me. I'd love to hear from you!
