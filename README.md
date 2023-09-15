@@ -4,7 +4,7 @@
 
 I'm pleased to introduce the WP-SPA (WordPress Single Page Application) project, developed as part of my assignment for the `Senior JavaScript Developer` role at `10up`. This project showcases my proficiency in `React` development, JWT authentication, routing, and interaction with external APIs.
 
-**Demo**: [View Demo](https://wp-spa.vercel.app/){:target="\_blank"}
+**Demo**: <a href="https://wp-spa.vercel.app/" target="_blank">View Demo</a>
 
 ### Project Approach Details
 
@@ -66,7 +66,7 @@ These prerequisites are essential to ensure the smooth functioning of the WP-SPA
 
 ### Installation and Setup
 
-To run this project locally, you'll need to have Node.js and npm installed on your machine. You can download Node.js from [here](https://nodejs.org/en/download/){:target="\_blank"}. npm is bundled with Node.js, so you don't need to install it separately.
+To run this project locally, you'll need to have Node.js and npm installed on your machine. You can download Node.js from <a href="https://nodejs.org/en/download/" target="_blank">here</a>. npm is bundled with Node.js, so you don't need to install it separately.
 
 Once you have Node.js and npm installed, follow these steps to run the project locally:
 
@@ -117,6 +117,6 @@ Once you have the project running locally, you can use the following credentials
 
 I'm grateful for the opportunity to work on this assignment. It was a great learning experience, and I enjoyed working on it. I look forward to hearing your feedback and discussing the project in detail.
 
-In case you want to see how I approached this assignment, please read [TimeTracking.md](https://github.com/annasrauther/wp-spa/blob/trunk/TimeTracking.md){:target="\_blank"}
+In case you want to see how I approached this assignment, please read <a href="https://github.com/annasrauther/wp-spa/blob/trunk/TimeTracking.md" target="_blank">TimeTracking.md</a>.
 
 If you have any questions or feedback, please feel free to reach out to me. I'd love to hear from you!
