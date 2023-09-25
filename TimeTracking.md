@@ -82,21 +82,20 @@
 
 - **Development Time:** 12 hours
 - **Analysis:** 3 hours
-  - Includes deep user story analysis, requirement understanding, and planning.
+  - Requirements understanding and planning.
 - **Documentation:** 3 hours
   - Comprehensive documentation of code and project.
 - **Communication:** 1 hour
-  - Includes productive email conversations and collaborations.
-- **Total Time Spent:** 20.5 hours (Ballpark)
+  - Email conversations and collaboration with 10up Team.
+- **Total Time Spent:** 20 hours (Ballpark)
 
 ## My Thoughts
 
-- I enjoyed working on this project, and I learned a lot.
-- I had to setup a Custom WordPress REST API, because the provided API in the assignment was not working. So I setup JWT Authentication and CORS on my custom WordPress API.
-- The project is adaptable; updates are as simple as tweaking the .env variable if we need this to point to a different WordPress API domain.
-- My personal preference for these type of projects which are more content-driven.
-  I would consider using Next.js (App Router) for future projects to enhance the developer experience, including server-side rendering.
+- I enjoyed working on this project, and I learned a few things.
+- Managed to score a good Lighthouse score of almost 100% on all the pages. Except SEO, which is not applicable for this project.
+- I had to setup a Custom WordPress REST API, because the provided API in the assignment was not working. So I had to setup JWT Authentication and CORS on my custom WordPress Site and use it as API instead.
+- The project is adaptable, updates are as simple as tweaking the .env variable if we need this to point to a different WordPress API domain.
+- My personal preference for these type of projects which are more content-driven, I would consider using Next.js (App Router) for future projects to enhance the developer experience, performance and SEO by utilizing server-side rendering (Incremental Static Regeneration).
 - I haven't added Tests, but I would add them if needed for a production-ready application.
 - I felt the project was a bit challenging, specifically the building this assignment using minimal dependencies. So I had used natively available React APIs and Hooks to build this project. Just one dependency for routing, which is `react-router-dom`.
-- Just added one single Error Boundary component, but I would add more if needed for a production-ready application.
-- Managed to score a good Lighthouse score of almost 100% on all the pages. Except SEO, which is not applicable for this project.
+- Just added one single Error Boundary component, but I would add more for component level if needed.
